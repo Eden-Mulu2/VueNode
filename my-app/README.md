@@ -5,19 +5,13 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### run the front end
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+### run the back end
+```bash
+node server.js
 ```
 
 ### Customize configuration

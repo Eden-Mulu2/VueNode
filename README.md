@@ -1,6 +1,3 @@
-Certainly! Here's a sample README.md file for your VueNode application:
-
-```markdown
 # VueNode App
 
 VueNode is a web application built with Vue.js on the frontend and Node.js on the backend. This app serves as a template for a full-stack JavaScript application and demonstrates basic CRUD (Create, Read, Update, Delete) functionality with a RESTful API.

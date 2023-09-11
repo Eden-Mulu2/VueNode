@@ -1,0 +1,52 @@
+.header {
+    padding: 2%;
+    background-color: darkslategrey;
+    font-size: 50px;
+    text-align: center;
+    width: 100%;
+    color: white;
+ }
+ 
+ .footer {
+   padding: 2%;
+    background-color: red;
+    font-size: 50px;
+    text-align: center;
+    width: 100%
+ }
+
+ form{
+  border: 1px solid darkgrey;
+  padding: 2em;
+  box-shadow: 10px 5px 5px black;
+ }
+ 
+ .dashboard {
+   padding: 3% 1%;
+ }
+
+h1 {
+  text-align: center;
+}
+
+.display-board {
+  width: 100%;
+  background-color: rgba(0, 119, 128, 0.5);
+  box-shadow: 10px 5px 5px black;
+  padding: 5%;
+}
+
+.number {
+  color: red;
+  font-size: 75px;
+  text-align: center;
+}
+
+.mrgnbtm {
+  margin-top: 20px;
+}
+
+.btn-danger:hover{
+  transition: transform 125ms;
+    transform: translateY(-10px);
+}

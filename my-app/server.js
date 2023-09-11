@@ -17,6 +17,29 @@ app.use(cors()); // This allows requests from all origins
 const mongoose = require('mongoose');
 
 
+
+const dotenv = require('dotenv');
+dotenv.config({ path: './conf.env' });
+
+
+
+// Define the MongoDB connection URL (replace 'your-database-url' with your actual database URL)
+const dbUrl = 'mongodb://localhost:27017/myapp';
+
+// Connect to the MongoDB database
+// mongoose
+mongoose
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true, //deprecation warning
+    useUnifiedTopology: true
+  })
+  .then(con => {
+    console.log('Connected to the database successfully!');
+  });
+
+
+
+
 // Define the user schema
 const userSchema = new mongoose.Schema({
     firstName: {
@@ -64,10 +87,18 @@ app.post('/api/createUser', async (req, res) => {
 // Define a route to get all users
 app.get('/api/users', async (req, res) => {
     try {
+      console.log('GET /api/users endpoint hit');
       // Fetch all users from your database (replace with your database logic)
-      const users = await UserModel.find();
+      const users = await UserModel.find().lean();;
+
+      const simplifiedUsers = users.map(user => ({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+      }));
   
-      res.json(users);
+      res.json(simplifiedUsers);
+
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Failed to fetch users' });

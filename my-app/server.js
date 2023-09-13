@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const axios = require('axios');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Import the cors middleware
 
@@ -23,8 +22,6 @@ dotenv.config({ path: './conf.env' });
 
 
 
-// Define the MongoDB connection URL (replace 'your-database-url' with your actual database URL)
-const dbUrl = 'mongodb://localhost:27017/myapp';
 
 // Connect to the MongoDB database
 // mongoose
@@ -33,7 +30,7 @@ mongoose
     useNewUrlParser: true, //deprecation warning
     useUnifiedTopology: true
   })
-  .then(con => {
+  .then(() => {
     console.log('Connected to the database successfully!');
   });
 
@@ -89,7 +86,7 @@ app.get('/api/users', async (req, res) => {
     try {
       console.log('GET /api/users endpoint hit');
       // Fetch all users from your database (replace with your database logic)
-      const users = await UserModel.find().lean();;
+      const users = await UserModel.find().lean();
 
       const simplifiedUsers = users.map(user => ({
         firstName: user.firstName,
@@ -104,6 +101,19 @@ app.get('/api/users', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch users' });
     }
   });
+
+  app.delete('/api/users', async (req, res) => {
+    try {
+      console.log('DELETE /api/users endpoint hit');
+      // Delete all users from your database (replace with your database logic)
+      await UserModel.deleteMany();
+      res.status(204).send(); // Send a successful response with status 204 (No Content)
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to delete users' });
+    }
+  });
+  
 
 // Start the server
 const PORT = process.env.PORT || 3000;

@@ -1,11 +1,10 @@
 <template>
     <div class="header">
-        Vue.js With NodeJS
+        Vue.js With NodeJS + MongoDB
     </div>
 </template>
 
 <script>
-    console.log("I am in header!!!")
     export default {
         name: 'Header'
     }
